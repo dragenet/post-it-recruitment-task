@@ -1,15 +1,24 @@
+import { Grid } from '@mui/material';
+import Link from 'next/link';
+import { getUsers, User } from '~/api';
 import { SeoHead } from '~/components/SeoHead';
 import { UserCard } from '~/components/UserCard';
-import { Grid } from '@mui/material';
-import { mockedUsers } from '~/mocks/mockedUsers';
-import Link from 'next/link';
 
-export default function Home() {
+export const getServerSideProps = async () => {
+  const users = await getUsers();
+  return { props: { users } };
+};
+
+export interface HomePageProps {
+  users: User[];
+}
+
+export default function HomePage({ users }: HomePageProps) {
   return (
     <>
       <SeoHead />
       <Grid container spacing={2} alignItems="stretch" sx={{ p: 3 }}>
-        {mockedUsers.slice(0, 8).map((user) => (
+        {users.slice(0, 8).map((user) => (
           <Link
             key={user.id}
             href={{
