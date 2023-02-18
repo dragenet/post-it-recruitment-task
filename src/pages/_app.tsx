@@ -1,9 +1,8 @@
-import '~/styles/globals.css';
 import type { AppProps as AppPropsBase } from 'next/app';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import createEmotionCache from '~/utils/createEmotionCache';
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
-import lightThemeOptions from '~/styles/theme/lightThemeOptions';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { lightTheme } from '~/theme/lightTheme';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -15,8 +14,6 @@ export interface AppProps extends AppPropsBase {
 }
 
 const clientSideEmotionCache = createEmotionCache();
-
-const lightTheme = createTheme(lightThemeOptions);
 
 export default function App({
   Component,
