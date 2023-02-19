@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { UserCard } from '~/components/UserCard';
+import { UserCard } from '../UserCard';
 import { mockedUser } from './mockedData';
 
 describe('UserCard', () => {
