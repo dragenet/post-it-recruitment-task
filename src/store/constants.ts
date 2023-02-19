@@ -1,8 +1,10 @@
-import { User } from '~/api';
+import { Post, User } from '~/api';
 import { Dispatch } from 'react';
 
 export interface AppState {
   users: User[];
+  posts: Post[];
+  currentUser: User | null;
 }
 
 export interface ContextStoreProviderProps {
@@ -19,6 +21,10 @@ export interface WithServerState {
   serverState: AppState;
 }
 
+export interface GetServerState {
+  serverState: Partial<AppState>;
+}
+
 export enum AppActionsNames {
   REPLACE_STORE_WITH_SERVER_STATE = 'REPLACE_STORE_WITH_SERVER_STATE',
 }
@@ -30,4 +36,6 @@ export type AppActions = {
 
 export const initialAppState: AppState = {
   users: [],
+  posts: [],
+  currentUser: null,
 };
