@@ -11,6 +11,7 @@ import {
   WithServerState,
 } from '~/store';
 import { BaseLayout } from '~/components/templates/BaseLayout';
+import { paths } from '~/config/paths';
 
 export const getServerSideProps: GetServerSideProps<
   GetServerState
@@ -35,7 +36,7 @@ function HomePage({ serverState }: WithServerState) {
           <Link
             key={user.id}
             href={{
-              pathname: '/user/[id]',
+              pathname: paths.userDetails,
               query: {
                 id: user.id,
               },
