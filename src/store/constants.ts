@@ -1,20 +1,33 @@
 import { User } from '~/api';
 import { Dispatch } from 'react';
 
-export interface AppStateType {
+export interface AppState {
   users: User[];
 }
 
 export interface ContextStoreProviderProps {
-  children?: JSX.Element;
-  initialState?: AppStateType;
+  children?: JSX.Element | JSX.Element[];
+  initialState?: AppState;
 }
 
-export const initialAppState: AppStateType = {
-  users: [],
-};
-
-export interface ContextStoreObject<T> {
-  state: AppStateType;
+export interface ContextStore<T> {
+  state: AppState;
   dispatch: Dispatch<T>;
 }
+
+export interface WithServerState {
+  serverState: AppState;
+}
+
+export enum AppActionsNames {
+  REPLACE_STORE_WITH_SERVER_STATE = 'REPLACE_STORE_WITH_SERVER_STATE',
+}
+
+export type AppActions = {
+  type: AppActionsNames.REPLACE_STORE_WITH_SERVER_STATE;
+  payload: AppState;
+};
+
+export const initialAppState: AppState = {
+  users: [],
+};

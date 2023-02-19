@@ -1,10 +1,7 @@
-import { createContext, useReducer } from 'react';
+import { useReducer } from 'react';
 import * as C from './constants';
+import { StoreContext } from './context';
 import { reducer } from './reducer';
-
-export const ContextStore = createContext<C.ContextStoreObject<null>>({
-  state: C.initialAppState,
-} as C.ContextStoreObject<null>);
 
 export const ContextStoreProvider = ({
   children,
@@ -13,8 +10,8 @@ export const ContextStoreProvider = ({
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <ContextStore.Provider value={{ state, dispatch }}>
+    <StoreContext.Provider value={{ state, dispatch }}>
       {children}
-    </ContextStore.Provider>
+    </StoreContext.Provider>
   );
 };

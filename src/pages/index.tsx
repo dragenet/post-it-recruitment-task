@@ -1,19 +1,22 @@
 import { Grid } from '@mui/material';
 import Link from 'next/link';
-import { getUsers, User } from '~/api';
+import { getUsers } from '~/api';
 import { SeoHead } from '~/components/SeoHead';
 import { UserCard } from '~/components/UserCard';
+import { useContextState, useServerStateSync, WithServerState } from '~/store';
 
 export const getServerSideProps = async () => {
   const users = await getUsers();
-  return { props: { users } };
+  const serverState = {
+    users,
+  };
+  return { props: { serverState } };
 };
 
-export interface HomePageProps {
-  users: User[];
-}
+export default function HomePage({ serverState }: WithServerState) {
+  useServerStateSync(serverState);
+  const { users } = useContextState();
 
-export default function HomePage({ users }: HomePageProps) {
   return (
     <>
       <SeoHead />
