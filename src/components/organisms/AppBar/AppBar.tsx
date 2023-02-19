@@ -8,9 +8,7 @@ export const AppBar = ({ leftButton, rightButton }: C.AppBarProps) => {
     <Box minHeight="48px" marginBottom={6}>
       <AppBarBase>
         <Grid container direction="row" alignItems="center" minHeight="48px">
-          <Grid item xs={1}>
-            {leftButton}
-          </Grid>
+          <Grid item>{leftButton}</Grid>
 
           <Grid item alignSelf="center" xs={10}>
             <Typography
@@ -22,7 +20,7 @@ export const AppBar = ({ leftButton, rightButton }: C.AppBarProps) => {
               {currentUser?.name || process.env.NEXT_PUBLIC_APP_NAME}
             </Typography>
           </Grid>
-          <Grid item xs={1}>
+          <Grid item justifySelf="flex-end">
             {rightButton}
           </Grid>
         </Grid>

@@ -8,7 +8,7 @@ export const useContextStore = () => useContext(StoreContext);
 export const useServerStateSync = (serverState: C.AppState) => {
   const { dispatch } = useContextStore();
   useEffect(() => {
-    dispatch(replaceStoreWithServerState(serverState));
+    return dispatch(replaceStoreWithServerState(serverState));
   }, [serverState, dispatch]);
 };
 

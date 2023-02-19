@@ -13,3 +13,7 @@ export const getUserById = async (userId: number): Promise<User> =>
 
 export const getPostsByUserId = async (userId: number): Promise<Post[]> =>
   fetcher(`/users/${userId}/posts`);
+
+export const deletePostById = async (
+  postId: number
+): Promise<Record<string, never>> => fetcher(`/posts/${postId}`);

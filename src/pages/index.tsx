@@ -18,6 +18,7 @@ export const getServerSideProps: GetServerSideProps<
   const users = await getUsers();
   const serverState = {
     users,
+    currentUser: null,
   };
   return { props: { serverState } };
 };

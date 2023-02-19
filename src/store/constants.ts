@@ -25,14 +25,20 @@ export interface GetServerState {
   serverState: Partial<AppState>;
 }
 
-export enum AppActionsNames {
-  REPLACE_STORE_WITH_SERVER_STATE = 'REPLACE_STORE_WITH_SERVER_STATE',
+export enum AppActionsTypes {
+  SYNC_STORE_WITH_SERVER_STATE = 'SYNC_STORE_WITH_SERVER_STATE',
+  REMOVE_POST_BY_ID = 'REMOVE_POST_BY_ID',
 }
 
-export type AppActions = {
-  type: AppActionsNames.REPLACE_STORE_WITH_SERVER_STATE;
-  payload: AppState;
-};
+export type AppActions =
+  | {
+      type: AppActionsTypes.SYNC_STORE_WITH_SERVER_STATE;
+      payload: AppState;
+    }
+  | {
+      type: AppActionsTypes.REMOVE_POST_BY_ID;
+      payload: number;
+    };
 
 export const initialAppState: AppState = {
   users: [],
