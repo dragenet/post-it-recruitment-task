@@ -36,3 +36,11 @@ export interface Post {
 }
 
 export type NewPost = Omit<Post, 'id'>;
+
+export interface Comment {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+}

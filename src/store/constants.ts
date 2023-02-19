@@ -1,10 +1,12 @@
-import { Post, User } from '~/api';
+import { Comment, Post, User } from '~/api';
 import { Dispatch } from 'react';
 
 export interface AppState {
   users: User[];
   posts: Post[];
+  comments: Record<number, Comment[]>;
   currentUser: User | null;
+  currentPost: Post | null;
   isAddPostsModalOpen: boolean;
 }
 
@@ -54,6 +56,8 @@ export type AppActions =
 export const initialAppState: AppState = {
   users: [],
   posts: [],
+  comments: {},
   currentUser: null,
+  currentPost: null,
   isAddPostsModalOpen: false,
 };
