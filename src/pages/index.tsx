@@ -1,8 +1,8 @@
 import { Grid } from '@mui/material';
 import Link from 'next/link';
 import { getUsers } from '~/api';
-import { SeoHead } from '~/components/SeoHead';
-import { UserCard } from '~/components/UserCard';
+import { SeoHead } from '~/components/molecules/SeoHead';
+import { UserCard } from '~/components/molecules/UserCard';
 import { useContextState, useServerStateSync, WithServerState } from '~/store';
 
 export const getServerSideProps = async () => {
