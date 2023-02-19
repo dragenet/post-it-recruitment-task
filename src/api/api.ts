@@ -1,4 +1,4 @@
-import { NewPost, Post, User } from '~/api/constants';
+import { Comment, NewPost, Post, User } from '~/api/constants';
 import fetch from 'cross-fetch';
 
 export const fetcher = async (path: string, options?: RequestInit) =>
@@ -10,6 +10,9 @@ export const getUsers = async (): Promise<User[]> => fetcher('/users');
 
 export const getUserById = async (userId: number): Promise<User> =>
   fetcher(`/users/${userId}`);
+
+export const getPostById = async (postId: number): Promise<Post> =>
+  fetcher(`/posts/${postId}`);
 
 export const getPostsByUserId = async (userId: number): Promise<Post[]> =>
   fetcher(`/users/${userId}/posts`);
@@ -24,3 +27,6 @@ export const deletePostById = async (
   postId: number
 ): Promise<Record<string, never>> =>
   fetcher(`/posts/${postId}`, { method: 'DELETE' });
+
+export const getCommentsByPostId = async (postId: number): Promise<Comment[]> =>
+  fetcher(`/posts/${postId}/comments`);
