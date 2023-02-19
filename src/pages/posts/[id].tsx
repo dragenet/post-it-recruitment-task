@@ -6,10 +6,8 @@ import {
   useServerStateSync,
   WithServerState,
 } from '~/store';
-import { BaseLayout } from '~/components/templates/BaseLayout';
-import { BackButton } from '~/components/molecules/BackButton';
-import { PostDetails } from '~/components/molecules/PostDetails';
-import { CommentsSection } from '~/components/organisms/CommentsSection';
+import { SeoHead } from '~/components/molecules/SeoHead';
+import { PostsDetailsPageTemplate } from '~/components/templates/PostsDetailsPageTemplate';
 
 export const getServerSideProps: GetServerSideProps<GetServerState> = async (
   ctx
@@ -30,19 +28,14 @@ export const getServerSideProps: GetServerSideProps<GetServerState> = async (
 
 export default function PostDetailsPage({ serverState }: WithServerState) {
   useServerStateSync(serverState);
-  const { currentPost, comments } = useContextState();
-  if (!currentPost) return null;
+  const { currentUser } = useContextState();
+
+  if (!currentUser) return null;
 
   return (
     <>
-      <BaseLayout
-        barButtons={{
-          leftButton: <BackButton />,
-        }}
-      >
-        <PostDetails post={currentPost} />
-        <CommentsSection comments={comments[currentPost.id]} />
-      </BaseLayout>
+      <SeoHead title={currentUser?.username} />
+      <PostsDetailsPageTemplate />
     </>
   );
 }
