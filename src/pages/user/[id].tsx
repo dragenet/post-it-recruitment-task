@@ -6,13 +6,8 @@ import {
   useServerStateSync,
   WithServerState,
 } from '~/store';
-import { BaseLayout } from '~/components/templates/BaseLayout';
-import { BackButton } from '~/components/molecules/BackButton';
-import { AddPostButton } from '~/components/molecules/AddPostButton';
-import { List } from '@mui/material';
-import { PostListItem } from '~/components/organisms/PostListItem';
-import { AddPostDialog } from '~/components/organisms/AddPostDialog';
-import { useMutations } from '~/store/mutations';
+import { UserDetailsPageTemplate } from '~/components/templates/UserDetailsPageTemplate';
+import { SeoHead } from '~/components/molecules/SeoHead';
 
 export const getServerSideProps: GetServerSideProps<GetServerState> = async (
   ctx
@@ -27,31 +22,14 @@ export const getServerSideProps: GetServerSideProps<GetServerState> = async (
   return { props: { serverState } };
 };
 
-export default function UserPage({ serverState }: WithServerState) {
+export default function UserDetailsPage({ serverState }: WithServerState) {
   useServerStateSync(serverState);
-  const { posts } = useContextState();
-  const { setIsAddPostModalOpen } = useMutations();
+  const { currentUser } = useContextState();
+
   return (
     <>
-      <BaseLayout
-        barButtons={{
-          leftButton: <BackButton />,
-          rightButton: (
-            <AddPostButton
-              aria-label="Add post"
-              edge="end"
-              onClick={() => setIsAddPostModalOpen(true)}
-            />
-          ),
-        }}
-      >
-        <List>
-          {posts.map((post) => (
-            <PostListItem key={post.id} post={post} />
-          ))}
-        </List>
-        <AddPostDialog />
-      </BaseLayout>
+      <SeoHead title={currentUser?.username} />
+      <UserDetailsPageTemplate />
     </>
   );
 }
