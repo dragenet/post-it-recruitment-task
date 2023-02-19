@@ -10,7 +10,7 @@ import {
   useServerStateSync,
   WithServerState,
 } from '~/store';
-import { BaseLayout } from '~/components/layouts/BaseLayout';
+import { BaseLayout } from '~/components/templates/BaseLayout';
 
 export const getServerSideProps: GetServerSideProps<
   GetServerState
