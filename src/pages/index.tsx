@@ -1,11 +1,20 @@
+import { GetServerSideProps } from 'next';
 import { Grid } from '@mui/material';
 import Link from 'next/link';
 import { getUsers } from '~/api';
 import { SeoHead } from '~/components/molecules/SeoHead';
 import { UserCard } from '~/components/molecules/UserCard';
-import { useContextState, useServerStateSync, WithServerState } from '~/store';
+import {
+  GetServerState,
+  useContextState,
+  useServerStateSync,
+  WithServerState,
+} from '~/store';
+import { BaseLayout } from '~/components/layouts/BaseLayout';
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps<
+  GetServerState
+> = async () => {
   const users = await getUsers();
   const serverState = {
     users,
@@ -13,12 +22,12 @@ export const getServerSideProps = async () => {
   return { props: { serverState } };
 };
 
-export default function HomePage({ serverState }: WithServerState) {
+function HomePage({ serverState }: WithServerState) {
   useServerStateSync(serverState);
   const { users } = useContextState();
 
   return (
-    <>
+    <BaseLayout>
       <SeoHead />
       <Grid container spacing={2} alignItems="stretch" sx={{ p: 3 }}>
         {users.slice(0, 8).map((user) => (
@@ -38,6 +47,8 @@ export default function HomePage({ serverState }: WithServerState) {
           </Link>
         ))}
       </Grid>
-    </>
+    </BaseLayout>
   );
 }
+
+export default HomePage;
