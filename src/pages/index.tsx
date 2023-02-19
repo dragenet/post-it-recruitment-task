@@ -3,7 +3,7 @@ import { Grid } from '@mui/material';
 import Link from 'next/link';
 import { getUsers } from '~/api';
 import { SeoHead } from '~/components/molecules/SeoHead';
-import { UserCard } from '~/components/molecules/UserCard';
+import { UserCard } from '~/components/organisms/UserCard';
 import {
   GetServerState,
   useContextState,

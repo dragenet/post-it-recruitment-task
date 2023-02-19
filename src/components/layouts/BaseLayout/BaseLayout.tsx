@@ -1,6 +1,6 @@
 import * as C from './constants';
 import { Box } from '@mui/material';
-import { AppBar } from '~/components/molecules/AppBar';
+import { AppBar } from '~/components/organisms/AppBar';
 
 export const BaseLayout = ({ children, barButtons }: C.DetailsLayoutProps) => (
   <Box>
