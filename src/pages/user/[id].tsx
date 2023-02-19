@@ -11,6 +11,8 @@ import { BackButton } from '~/components/molecules/BackButton';
 import { AddPostButton } from '~/components/molecules/AddPostButton';
 import { List } from '@mui/material';
 import { PostListItem } from '~/components/organisms/PostListItem';
+import { AddPostDialog } from '~/components/organisms/AddPostDialog';
+import { useMutations } from '~/store/mutations';
 
 export const getServerSideProps: GetServerSideProps<GetServerState> = async (
   ctx
@@ -28,12 +30,19 @@ export const getServerSideProps: GetServerSideProps<GetServerState> = async (
 export default function UserPage({ serverState }: WithServerState) {
   useServerStateSync(serverState);
   const { posts } = useContextState();
+  const { setIsAddPostModalOpen } = useMutations();
   return (
     <>
       <BaseLayout
         barButtons={{
           leftButton: <BackButton />,
-          rightButton: <AddPostButton aria-label="Add post" edge="end" />,
+          rightButton: (
+            <AddPostButton
+              aria-label="Add post"
+              edge="end"
+              onClick={() => setIsAddPostModalOpen(true)}
+            />
+          ),
         }}
       >
         <List>
@@ -41,6 +50,7 @@ export default function UserPage({ serverState }: WithServerState) {
             <PostListItem key={post.id} post={post} />
           ))}
         </List>
+        <AddPostDialog />
       </BaseLayout>
     </>
   );

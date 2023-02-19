@@ -9,13 +9,13 @@ import {
 import { ListItemProps } from './constants';
 import DeleteIcon from '@mui/icons-material/Delete';
 import truncate from 'truncate';
-import { useMutation } from '~/store/mutations';
+import { useMutations } from '~/store/mutations';
 
 export const PostListItem = ({
   post,
   ...props
 }: ListItemProps & ListItemBaseProps) => {
-  const { removePost } = useMutation();
+  const { removePost } = useMutations();
   return (
     <ListItemBase {...props} dense>
       <ListItemIcon>

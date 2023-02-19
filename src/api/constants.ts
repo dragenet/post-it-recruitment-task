@@ -34,3 +34,5 @@ export interface Post {
   title: string;
   body: string;
 }
+
+export type NewPost = Omit<Post, 'id'>;
