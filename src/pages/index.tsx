@@ -29,7 +29,7 @@ function HomePage({ serverState }: WithServerState) {
   return (
     <BaseLayout>
       <SeoHead />
-      <Grid container spacing={2} alignItems="stretch" sx={{ p: 3 }}>
+      <Grid container spacing={2} alignItems="stretch">
         {users.slice(0, 8).map((user) => (
           <Link
             key={user.id}

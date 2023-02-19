@@ -5,7 +5,7 @@ import * as C from './constants';
 export const AppBar = ({ leftButton, rightButton }: C.AppBarProps) => {
   const { currentUser } = useContextState();
   return (
-    <Box marginBottom={6}>
+    <Box minHeight="48px" marginBottom={6}>
       <AppBarBase>
         <Grid container direction="row" alignItems="center" minHeight="48px">
           <Grid item xs={1}>
