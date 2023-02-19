@@ -24,8 +24,10 @@ export const AddPostDialog = () => {
 
   const onSubmit = (data: C.AddPostFormFields) => {
     console.log('newPost', data);
-    if (state?.currentUser)
+    if (state?.currentUser) {
       addPost({ userId: state?.currentUser?.id, ...data });
+      handleClose();
+    }
   };
 
   if (!state.currentUser) return null;

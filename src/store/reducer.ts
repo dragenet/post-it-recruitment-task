@@ -16,7 +16,7 @@ export const reducer = (state: C.AppState, action: C.AppActions) => {
     case C.AppActionsTypes.ADD_POST:
       return {
         ...state,
-        posts: [...state.posts, payload],
+        posts: [payload, ...state.posts],
       };
 
     case C.AppActionsTypes.REMOVE_POST_BY_ID:
