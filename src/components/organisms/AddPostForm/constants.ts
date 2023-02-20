@@ -5,4 +5,5 @@ export interface AddPostFormFields {
 
 export interface AddPostFormProps {
   onSubmit: (data: AddPostFormFields) => void;
+  onClose: () => void;
 }
