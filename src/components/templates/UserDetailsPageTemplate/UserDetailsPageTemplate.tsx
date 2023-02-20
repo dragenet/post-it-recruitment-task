@@ -1,34 +1,18 @@
-import { useContextState } from '~/store';
 import { BackButton } from '~/components/molecules/BackButton';
 import { BaseLayout } from '~/components/templates/BaseLayout';
-import { useMutations } from '~/store/mutations';
-import { AddPostButton } from '~/components/molecules/AddPostButton';
-import { List } from '@mui/material';
-import { PostListItem } from '~/components/organisms/PostListItem';
+import { AddPostButton } from '~/components/organisms/AddPostButton';
 import { AddPostDialog } from '~/components/organisms/AddPostDialog';
+import { PostsList } from '~/components/organisms/PostsList';
 
 export const UserDetailsPageTemplate = () => {
-  const { posts } = useContextState();
-  const { setIsAddPostModalOpen } = useMutations();
-
   return (
     <BaseLayout
       barButtons={{
         leftButton: <BackButton />,
-        rightButton: (
-          <AddPostButton
-            aria-label="Add post"
-            edge="end"
-            onClick={() => setIsAddPostModalOpen(true)}
-          />
-        ),
+        rightButton: <AddPostButton aria-label="Add post" />,
       }}
     >
-      <List>
-        {posts.map((post) => (
-          <PostListItem key={post.id} post={post} />
-        ))}
-      </List>
+      <PostsList />
       <AddPostDialog />
     </BaseLayout>
   );

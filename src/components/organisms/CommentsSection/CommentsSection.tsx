@@ -1,25 +1,19 @@
-import { Button, Collapse, Grid, List, Typography } from '@mui/material';
+import { Button, Collapse, Grid } from '@mui/material';
 import { useToggle } from '~/utils/useToggle';
-import * as C from './constants';
-import { CommentItem } from '~/components/molecules/CommentItem';
+import { CommentsSectionContent } from '~/components/molecules/CommentsSectionContent';
+import { useContextState } from '~/store';
 
-export const CommentsSection = ({ comments }: C.CommentsSectionProps) => {
+export const CommentsSection = () => {
+  const { currentPost, comments } = useContextState();
   const [isOpen, toggle] = useToggle();
+
+  if (!currentPost) return null;
+
   return (
     <Grid container direction="column" alignItems="center">
       {isOpen && (
         <Collapse in={isOpen}>
-          <Grid item alignSelf="flex-start">
-            <Typography variant="h5">Comments</Typography>
-          </Grid>
-
-          <Grid item>
-            <List>
-              {comments.map((comment) => (
-                <CommentItem key={comment.id} comment={comment} />
-              ))}
-            </List>
-          </Grid>
+          <CommentsSectionContent comments={comments[currentPost.id]} />
         </Collapse>
       )}
 
