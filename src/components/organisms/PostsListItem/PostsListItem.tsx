@@ -3,7 +3,6 @@ import {
   ListItem as ListItemBase,
   ListItemButton,
   ListItemIcon,
-  ListItemProps as ListItemBaseProps,
   Typography,
 } from '@mui/material';
 import { ListItemProps } from './constants';
@@ -13,10 +12,7 @@ import { useMutations } from '~/store/mutations';
 import { useRouter } from 'next/router';
 import { paths } from '~/config/paths';
 
-export const PostListItem = ({
-  post,
-  ...props
-}: ListItemProps & ListItemBaseProps) => {
+export const PostsListItem = ({ post }: ListItemProps) => {
   const router = useRouter();
   const { removePost } = useMutations();
 
@@ -24,8 +20,9 @@ export const PostListItem = ({
     event.preventDefault();
     removePost(post.id);
   };
+
   return (
-    <ListItemBase {...props} dense>
+    <ListItemBase dense>
       <ListItemIcon>
         <IconButton
           edge="end"

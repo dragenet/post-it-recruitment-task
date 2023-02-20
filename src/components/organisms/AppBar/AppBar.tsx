@@ -4,11 +4,12 @@ import * as C from './constants';
 
 export const AppBar = ({ leftButton, rightButton }: C.AppBarProps) => {
   const { currentUser } = useContextState();
+
   return (
-    <Box sx={{ flexGrow: 1 }} minHeight="48px" marginBottom={6}>
+    <Box minHeight="48px" marginBottom={6}>
       <AppBarBase>
         <Toolbar>
-          <Box component="div">{leftButton}</Box>
+          <Box>{leftButton}</Box>
 
           <Typography
             variant="h6"

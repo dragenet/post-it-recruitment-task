@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps<
   return { props: { serverState } };
 };
 
-function HomePage({ serverState }: WithServerState) {
+export default function HomePage({ serverState }: WithServerState) {
   useServerStateSync(serverState);
 
   return (
@@ -25,5 +25,3 @@ function HomePage({ serverState }: WithServerState) {
     </>
   );
 }
-
-export default HomePage;
