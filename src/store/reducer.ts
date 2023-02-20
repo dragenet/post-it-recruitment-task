@@ -25,6 +25,11 @@ export const reducer = (state: C.AppState, action: C.AppActions) => {
         ...state,
         posts,
       };
+    case C.AppActionsTypes.REMOVE_POST_CONFIRMATION_MODAL_OPEN:
+      return {
+        ...state,
+        postToRemoveId: payload,
+      };
 
     default:
       return state;
