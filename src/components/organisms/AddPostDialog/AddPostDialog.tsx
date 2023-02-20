@@ -1,11 +1,5 @@
 import { setIsAddPostModalOpen, useContextStore } from '~/store';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from '@mui/material';
+import { Dialog, DialogContent, DialogTitle } from '@mui/material';
 import { useMutations } from '~/store/mutations';
 import {
   AddPostForm,
@@ -33,15 +27,8 @@ export const AddPostDialog = () => {
       <DialogTitle textAlign="center">Add posts</DialogTitle>
 
       <DialogContent>
-        <AddPostForm onSubmit={handleSubmit} />
+        <AddPostForm onSubmit={handleSubmit} onClose={handleClose} />
       </DialogContent>
-
-      <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button type="submit" variant="contained">
-          Add
-        </Button>
-      </DialogActions>
     </Dialog>
   );
 };

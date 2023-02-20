@@ -1,8 +1,14 @@
-import { Box, TextareaAutosize, TextField } from '@mui/material';
+import {
+  Box,
+  Button,
+  DialogActions,
+  TextareaAutosize,
+  TextField,
+} from '@mui/material';
 import { useForm } from 'react-hook-form';
 import * as C from './constants';
 
-export const AddPostForm = ({ onSubmit }: C.AddPostFormProps) => {
+export const AddPostForm = ({ onSubmit, onClose }: C.AddPostFormProps) => {
   const { register, handleSubmit } = useForm<C.AddPostFormFields>();
 
   return (
@@ -19,6 +25,13 @@ export const AddPostForm = ({ onSubmit }: C.AddPostFormProps) => {
         style={{ minWidth: '100%', minHeight: '200px' }}
         {...register('body', { required: true })}
       />
+
+      <DialogActions>
+        <Button onClick={onClose}>Cancel</Button>
+        <Button type="submit" variant="contained">
+          Add
+        </Button>
+      </DialogActions>
     </Box>
   );
 };

@@ -1,7 +1,8 @@
-import { createPost, deletePostById, NewPost } from '~/api';
+import { createPost, deletePostById, NewPost, Post } from '~/api';
 import {
   addPost,
   removePostById,
+  removePostWithConfirmationModal,
   setIsAddPostModalOpen,
 } from '~/store/actions';
 import { Dispatch, useMemo } from 'react';
@@ -14,13 +15,17 @@ export const getMutations = (dispatch: Dispatch<AppActions>) => ({
     dispatch(addPost({ ...post, ...newPost }));
   },
 
+  removePost: async (postId: number) => {
+    await deletePostById(postId);
+    dispatch(removePostById(postId));
+  },
+
   setIsAddPostModalOpen: (value: boolean) => {
     dispatch(setIsAddPostModalOpen(value));
   },
 
-  removePost: async (postId: number) => {
-    await deletePostById(postId);
-    dispatch(removePostById(postId));
+  removePostWithConfirmationModal: (value: Post['id'] | null) => {
+    dispatch(removePostWithConfirmationModal(value));
   },
 });
 

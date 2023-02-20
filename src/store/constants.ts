@@ -8,6 +8,7 @@ export interface AppState {
   currentUser: User | null;
   currentPost: Post | null;
   isAddPostsModalOpen: boolean;
+  postToRemoveId: Post['id'] | null;
 }
 
 export interface ContextStoreProviderProps {
@@ -33,6 +34,7 @@ export enum AppActionsTypes {
   ADD_POST = 'ADD_POST',
   REMOVE_POST_BY_ID = 'REMOVE_POST_BY_ID',
   SET_IS_ADD_POST_MODAL_OPEN = 'SET_IS_ADD_POST_MODAL_OPEN',
+  REMOVE_POST_CONFIRMATION_MODAL_OPEN = 'REMOVE_POST_CONFIRMATION_MODAL_OPEN',
 }
 
 export type AppActions =
@@ -51,6 +53,10 @@ export type AppActions =
   | {
       type: AppActionsTypes.SET_IS_ADD_POST_MODAL_OPEN;
       payload: boolean;
+    }
+  | {
+      type: AppActionsTypes.REMOVE_POST_CONFIRMATION_MODAL_OPEN;
+      payload: Post['id'] | null;
     };
 
 export const initialAppState: AppState = {
@@ -60,4 +66,5 @@ export const initialAppState: AppState = {
   currentUser: null,
   currentPost: null,
   isAddPostsModalOpen: false,
+  postToRemoveId: null,
 };

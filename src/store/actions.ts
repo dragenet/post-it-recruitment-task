@@ -22,3 +22,10 @@ export const setIsAddPostModalOpen = (value: boolean): C.AppActions => ({
   type: C.AppActionsTypes.SET_IS_ADD_POST_MODAL_OPEN,
   payload: value,
 });
+
+export const removePostWithConfirmationModal = (
+  value: Post['id'] | null
+): C.AppActions => ({
+  type: C.AppActionsTypes.REMOVE_POST_CONFIRMATION_MODAL_OPEN,
+  payload: value,
+});
