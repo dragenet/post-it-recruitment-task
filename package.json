@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "yarn eslint . && yarn prettier --write ."
+    "lint": "yarn eslint . && yarn prettier --write .",
+    "test": "jest"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",
