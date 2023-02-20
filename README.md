@@ -65,6 +65,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Possible improvements
 
 - Add error handling
+- Add loading for smooth interactions
 - Use deep extend to merge client and server side store during stores sync
 - Add more tests
-- Improve UI, it's not perfect now xD
+- Improve UI, it's not perfect now :D
